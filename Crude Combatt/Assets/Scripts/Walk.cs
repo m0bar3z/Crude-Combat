@@ -5,15 +5,35 @@ using UnityEngine;
 
 public class Walk : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float offset;
     void Start()
     {
-        transform.DOMoveX(5f,5f);
+       //  transform.DOMoveX(5f,5f);
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
-        
+        Movement();
+    }
+
+    void Movement()
+    {
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.DOMove(transform.position + (transform.up* offset), 0.3f);
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.DOMove(transform.position +(- transform.up * offset), 0.3f);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.DOMove(transform.position + (-transform.right * offset), 0.3f);
+        }
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.DOMove(transform.position + transform.right * offset, 0.3f);
+        }
     }
 }
